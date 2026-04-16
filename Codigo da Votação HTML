@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleições 3DS 2026</title>
+    <style>
+        /* --- ESTILO (CSS) --- */
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            margin: 0;
+            min-height: 100vh;
+            /* Tente 'img/fundo.jpeg' ou apenas 'fundo.jpeg' se estiver na mesma pasta */
+            background-image: url('img/fundo.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-color: #333; 
+            
+        }
+
+        /* Cabeçalho Azul da Imagem */
+        .header-azul { 
+            background: #003366; 
+            color: white; 
+            width: 100%; 
+            text-align: center; 
+            padding: 25px 0; 
+            font-size: 24px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Candidatos em linha reta com nome em cima */
+        .candidatos-linha { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            margin-bottom: 40px; 
+            background: rgba(255, 255, 255, 0.85); 
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .candidato-card { display: flex; flex-direction: column; align-items: center; }
+        .nome { font-weight: bold; margin-bottom: 8px; font-size: 14px; color: #003366; }
+        
+        .foto { 
+            width: 100px; height: 100px; 
+            border-radius: 50%; 
+            overflow: hidden; 
+            border: 4px solid #003366; 
+            background: #eee; 
+        }
+        .foto img { width: 100%; height: 100%; object-fit: cover; }
+        .num-legenda { font-weight: bold; margin-top: 5px; color: #444; }
+
+        /* Urna */
+        .urna { background: #222; padding: 25px; border-radius: 10px; display: flex; gap: 20px; border: 5px solid #111; box-shadow: 0 15px 40px rgba(0,0,0,0.5); }
+        .tela { background: #fff; width: 200px; height: 200px; border: 2px solid #000; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .tela p { margin: 0; font-weight: bold; color: #333; font-size: 14px; }
+        #visor { font-size: 70px; font-weight: bold; color: #444; margin-top: 10px; }
+
+        /* Teclado conforme a imagem */
+        .teclado { display: grid; grid-template-columns: repeat(2, 100px); gap: 12px; }
+        .teclado button { height: 55px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.2s; }
+        .teclado button:active { transform: scale(0.95); }
+        
+        .btn-preto { background: #1a1a1a; color: white; }
+        .btn-nulo { background: #e55a4b; color: white; font-size: 12px !important; }
+        
+        /* BOTÃO BRANCO COM ESCRITA PRETA */
+        .btn-branco { background: #ffffff !important; color: #000000 !important; border: 1px solid #ccc; font-size: 12px !important; }
+
+        .btn-corrige { background: #f4b465; color: #000; font-size: 12px !important; }
+        .btn-confirma { background: #5cb85c; color: white; font-size: 12px !important; }
+
+        .btn-resultado { margin-top: 40px; padding: 15px 40px; background: #007bff; color: white; border: none; border-radius: 30px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <div class="header-azul">
+        ELEIÇÕES COORDENAÇÃO TÉCNICO 3DS 2026
+    </div>
+
+    <div class="candidatos-linha">
+        <div class="candidato-card">
+            <span class="nome">HENRY</span>
+            <div class="foto"><img src="img/foto1.jpeg" alt="Henry"></div>
+            <span class="num-legenda">01</span>
+        </div>
+        <div class="candidato-card">
+            <span class="nome">MIGUEL</span>
+            <div class="foto"><img src="img/foto2.jpeg" alt="Miguel"></div>
+            <span class="num-legenda">02</span>
+        </div>
+        <div class="candidato-card">
+            <span class="nome">FÁBIO</span>
+            <div class="foto"><img src="img/foto3.jpeg" alt="Fabio"></div>
+            <span class="num-legenda">03</span>
+        </div>
+        <div class="candidato-card">
+            <span class="nome">MATHEUS</span>
+            <div class="foto"><img src="img/foto4.jpeg" alt="Matheus"></div>
+            <span class="num-legenda">04</span>
+        </div>
+		<div class="candidato-card">
+            <span class="nome">JOSÉ</span>
+            <div class="foto"><img src="img/foto5.jpeg" alt="José"></div>
+            <span class="num-legenda">05</span>
+        </div>
+		<div class="candidato-card">
+            <span class="nome">HENRIQUE</span>
+            <div class="foto"><img src="img/foto6.jpeg" alt="Henrique"></div>
+            <span class="num-legenda">06</span>
+        </div>
+    </div>
+
+    <div class="urna">
+        <div class="tela">
+            <p>NÚMERO:</p>
+            <div id="visor">0</div>
+        </div>
+        <div class="teclado">
+            <button class="btn-preto" onclick="inserir(1)">1</button>
+            <button class="btn-preto" onclick="inserir(2)">2</button>
+            <button class="btn-preto" onclick="inserir(3)">3</button>
+            <button class="btn-preto" onclick="inserir(4)">4</button>
+			<button class="btn-preto" onclick="inserir(5)">5</button>
+			<button class="btn-preto" onclick="inserir(6)">6</button>
+            <button class="btn-nulo" onclick="inserir(7)">NULO</button>
+            <button class="btn-branco" onclick="inserir(8)">BRANCO</button>
+            <button class="btn-corrige" onclick="corrige()">CORRIGE</button>
+            <button class="btn-confirma" onclick="votar()">CONFIRMA</button>
+        </div>
+    </div>
+
+    <button class="btn-resultado" onclick="mostrarResultado()">VER RESULTADO FINAL</button>
+
+    <script>
+        /* --- LÓGICA (JAVASCRIPT) --- */
+        // Variáveis separadas para contar cada voto corretamente
+        let v1 = 0, v2 = 0, v3 = 0, v4 = 0, v5 = 0, v6 = 0, nulo = 0, branco = 0;
+        let votoAtual = "";
+
+        function inserir(valor) {
+            votoAtual = valor;
+            document.getElementById("visor").innerHTML = valor;
+        }
+
+        function corrige() {
+            votoAtual = "";
+            document.getElementById("visor").innerHTML = "0";
+        }
+
+        function votar() {
+            if (votoAtual === "") {
+                alert("Por favor, digite um número!");
+                return;
+            }
+
+            // Contabilização individual
+            if (votoAtual == 1) v1++;
+            else if (votoAtual == 2) v2++;
+            else if (votoAtual == 3) v3++;
+            else if (votoAtual == 4) v4++;
+			else if (votoAtual == 5) v5++;
+			else if (votoAtual == 6) v6++;
+            else if (votoAtual == 7) nulo++;
+            else if (votoAtual == 8) branco++;
+
+            alert("✅ VOTO CONFIRMADO!");
+            corrige(); // Reseta o visor para o próximo
+        }
+
+        function mostrarResultado() {
+            let total = v1 + v2 + v3 + v4 + v5 + v6 + nulo + branco;
+            
+            // Agora os valores aparecerão corretamente no alerta
+            alert(
+                "📊 RESULTADO DAS ELEIÇÕES ADS 2024\n\n" +
+                "Henry (01): " + v1 + " votos\n" +
+                "Miguel (02): " + v2 + " votos\n" +
+                "Fabio (03): " + v3 + " votos\n" +
+                "Matheus (04): " + v4 + " votos\n" +
+				"José (05): " + v5 + " votos\n" +
+				"Henrique (06): " + v6 + " votos\n" +
+                "Votos Nulos: " + nulo + " votos\n" +
+                "Votos Brancos: " + branco + " votos\n\n" +
+                "TOTAL DE VOTOS: " + total
+            );
+        }
+    </script>
+</body>
+</html>
